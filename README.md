@@ -1,25 +1,29 @@
 # Julia notebooks
 
-[Pluto](https://plutojl.org) notebooks, mostly about geometry.
+[Pluto](https://plutojl.org) notebooks on geometry and computation. Each one is re-run from a
+clean environment on every push, so the output on the site is the output of the code in this
+repository.
 
 ## Notebooks
 
-### [A conjecture that was false](https://jitendravjh.in/julia-notebooks/jacobian-conjecture.html)
+### [The Jacobian conjecture in dimension three](https://jitendravjh.in/julia-notebooks/jacobian-conjecture.html)
 
-Keller asked in 1939 whether a polynomial map with an everywhere-invertible derivative must be
-invertible. It held for eighty-seven years and broke in July 2026.
+Keller asked in 1939 whether a polynomial map with an everywhere-invertible derivative must
+itself be invertible. The conjecture was refuted for three variables in July 2026, while the
+two-variable case he posed remains open.
 
-The notebook verifies the counterexample exactly: its Jacobian determinant is the constant −2,
-and three different points share an image. Then it shows the geometry behind it, where a grid
-pushed through a tangent sweep folds along the curve and covers the inside twice.
+The notebook verifies the counterexample in exact rational arithmetic, then accounts for it:
+multiplication of binary forms is generically three to one, and a tangent sweep shows the same
+multiplicity in two dimensions, where it can be drawn.
 
-### [The middle of nowhere](https://jitendravjh.in/julia-notebooks/middle-of-nowhere.html)
+### [The largest empty circle](https://jitendravjh.in/julia-notebooks/largest-empty-circle.html)
 
-The point in Australia farthest from any town. Searching the continent is unnecessary, because
-the answer always sits on a Voronoi vertex, and there are only a few hundred of those.
+Which point is farthest from every site in a finite set? The answer is centred at a Voronoi
+vertex or on the convex hull, which turns an optimisation over the plane into a search over a
+few hundred candidates.
 
-It lands in the Great Victoria Desert, 576 km from the nearest town, with three towns tied at
-that distance because the circle is resting on all three.
+Applied to Australian towns it lands in the Great Victoria Desert, 576 km from the nearest, with
+three towns tied at that distance because the circle rests on all three.
 
 ## Built with
 
