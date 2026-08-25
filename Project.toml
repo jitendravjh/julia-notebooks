@@ -2,6 +2,8 @@
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 CoordRefSystems = "b46f11dc-f210-4604-bfba-323c1ec968cb"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DynamicPolynomials = "7c1d4256-1411-5781-91ec-d7bc3513ac07"
 GeoArtifacts = "2a3f1dca-97a5-4513-bfd8-b69f0106a87e"
 GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
 Meshes = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"

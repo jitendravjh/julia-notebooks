@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Geo notebooks</title>
-<meta name="description" content="Pluto notebooks on the JuliaEarth stack: map projections, what they give up, and how accurately they invert.">
+<title>Julia notebooks</title>
+<meta name="description" content="Pluto notebooks about geometry: a conjecture that broke after 87 years, and the point in Australia farthest from any town.">
 <style>
   :root {
     --ocean: #0d1721;
@@ -53,43 +53,42 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>Every flat map of a round planet is a <span class="accent">lie</span>.</h1>
+    <h1>Notebooks about <span class="accent">geometry</span>.</h1>
     <p class="lede">
-      The only question is which lie you prefer. Pluto notebooks built on the JuliaEarth stack,
-      about map projections and what they cost.
+      Written in Pluto, run end to end on every push, and short enough to read in one sitting.
     </p>
   </header>
 
   <div class="cards">
-    <a class="card" href="shape-of-the-world.html">
-      <h2>The shape of the world</h2>
+    <a class="card" href="jacobian-conjecture.html">
+      <h2>A conjecture that was false</h2>
       <p>
-        Real coastlines morphing continuously between projections, then Tissot's indicatrix
-        showing exactly what each one gives up. Mercator keeps every circle a circle and lets
-        them grow without limit. Gall&ndash;Peters keeps every area and wrecks every angle.
-        Robinson keeps neither, on purpose.
+        Keller asked in 1939 whether a polynomial map whose derivative is invertible everywhere
+        must itself be invertible. It held for eighty-seven years and broke in July 2026. The
+        counterexample is verified here exactly, then explained by a sheet that folds along a
+        curve and covers the inside twice.
       </p>
-      <div class="tags"><span class="tag">Animation</span><span class="tag">Makie</span><span class="tag">Natural Earth</span></div>
+      <div class="tags"><span class="tag">Algebra</span><span class="tag">Meshes.jl</span><span class="tag">Animation</span></div>
     </a>
 
-    <a class="card" href="roundtrip-atlas.html">
-      <h2>A round-trip atlas</h2>
+    <a class="card" href="middle-of-nowhere.html">
+      <h2>The middle of nowhere</h2>
       <p>
-        Project a point, convert it back, measure how far it moved. Do that everywhere and the
-        errors turn out to have structure: Robinson's fall in bands on the five degree spacing
-        of its lookup table, Transverse Mercator's in two discs at its singularity.
+        The point in Australia farthest from any town, found without searching the continent.
+        The answer always sits on a Voronoi vertex, and the circle around it turns out to be
+        resting on three towns at once.
       </p>
-      <div class="tags"><span class="tag">Accuracy</span><span class="tag">CoordRefSystems</span></div>
+      <div class="tags"><span class="tag">Voronoi</span><span class="tag">Natural Earth</span><span class="tag">Meshes.jl</span></div>
     </a>
   </div>
 
   <footer>
     Built with
-    <a href="https://github.com/JuliaEarth/CoordRefSystems.jl">CoordRefSystems.jl</a>,
     <a href="https://github.com/JuliaGeometry/Meshes.jl">Meshes.jl</a>,
+    <a href="https://github.com/JuliaEarth/CoordRefSystems.jl">CoordRefSystems.jl</a>,
     <a href="https://github.com/JuliaEarth/GeoArtifacts.jl">GeoArtifacts.jl</a> and
     <a href="https://docs.makie.org">Makie.jl</a>.
-    Source on <a href="https://github.com/jitendravjh/geo-notebooks">GitHub</a>.
+    Source on <a href="https://github.com/jitendravjh/julia-notebooks">GitHub</a>.
   </footer>
 </div>
 </body>

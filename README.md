@@ -1,38 +1,37 @@
-# Geo notebooks
+# Julia notebooks
 
-[Pluto](https://plutojl.org) notebooks built on the [JuliaEarth](https://github.com/JuliaEarth)
-stack — real geospatial data, real projections, and pictures that explain something.
+[Pluto](https://plutojl.org) notebooks, mostly about geometry.
 
 ## Notebooks
 
-### [The shape of the world](https://jitendravjh.in/geo-notebooks/shape-of-the-world.html)
+### [A conjecture that was false](https://jitendravjh.in/julia-notebooks/jacobian-conjecture.html)
 
-Every flat map of a round planet is a lie, and Gauss proved you cannot avoid it. This notebook
-morphs the world continuously between projections, then uses Tissot's indicatrix — small circles
-drawn on the globe and projected along with the land — to show exactly what each projection
-gives up.
+Keller asked in 1939 whether a polynomial map with an everywhere-invertible derivative must be
+invertible. It held for eighty-seven years and broke in July 2026.
 
-Mercator keeps every circle a circle and lets them grow without limit. Gall–Peters keeps every
-circle the same area and squashes them into ellipses. Robinson keeps neither, on purpose.
+The notebook verifies the counterexample exactly: its Jacobian determinant is the constant −2,
+and three different points share an image. Then it shows the geometry behind it, where a grid
+pushed through a tangent sweep folds along the curve and covers the inside twice.
 
-### [A round-trip atlas](https://jitendravjh.in/geo-notebooks/roundtrip-atlas.html)
+### [The middle of nowhere](https://jitendravjh.in/julia-notebooks/middle-of-nowhere.html)
 
-Project a point, convert it back, and measure how far it moved. Doing that for every projection
-at every point on the globe turns a table of numbers into a map of where each implementation
-struggles — and the failures have structure. Robinson's error falls in horizontal bands sitting
-on the five-degree spacing of its lookup table. Transverse Mercator's falls in two discs at the
-singularity ninety degrees from its central meridian.
+The point in Australia farthest from any town. Searching the continent is unnecessary, because
+the answer always sits on a Voronoi vertex, and there are only a few hundred of those.
+
+It lands in the Great Victoria Desert, 576 km from the nearest town, with three towns tied at
+that distance because the circle is resting on all three.
 
 ## Built with
 
-[CoordRefSystems.jl](https://github.com/JuliaEarth/CoordRefSystems.jl) for projections,
-[Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl) for geometry,
-[GeoArtifacts.jl](https://github.com/JuliaEarth/GeoArtifacts.jl) for Natural Earth data,
-[Makie.jl](https://docs.makie.org) for drawing.
+[Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl),
+[CoordRefSystems.jl](https://github.com/JuliaEarth/CoordRefSystems.jl),
+[GeoArtifacts.jl](https://github.com/JuliaEarth/GeoArtifacts.jl),
+[DynamicPolynomials.jl](https://github.com/JuliaAlgebra/DynamicPolynomials.jl) and
+[Makie.jl](https://docs.makie.org).
 
 ## Running locally
 
 ```julia
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
-julia --project=. -e 'using Pluto; Pluto.run(notebook="notebooks/shape-of-the-world.jl")'
+julia --project=. -e 'using Pluto; Pluto.run(notebook="notebooks/jacobian-conjecture.jl")'
 ```
