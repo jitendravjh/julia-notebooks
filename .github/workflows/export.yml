@@ -1,4 +1,4 @@
-name: Export notebook
+name: Export notebooks
 
 on:
   push:
@@ -16,37 +16,35 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1'
-
       - uses: julia-actions/cache@v2
 
       - name: Cache notebook state
         uses: actions/cache@v4
         with:
           path: pluto_state_cache
-          key: ${{ runner.os }}-pluto-${{ hashFiles('**/Project.toml') }}-${{ hashFiles('notebook/**') }}
+          key: ${{ runner.os }}-pluto-${{ hashFiles('**/Project.toml') }}-${{ hashFiles('notebooks/**','src/**') }}
           restore-keys: ${{ runner.os }}-pluto-${{ hashFiles('**/Project.toml') }}-
 
-      - name: Run and export the notebook
+      - name: Run and export
         run: |
-          julia -e '
+          julia --project=. -e '
             using Pkg
-            Pkg.activate(mktempdir())
+            Pkg.instantiate()
             Pkg.add("PlutoSliderServer")
             using PlutoSliderServer
             PlutoSliderServer.github_action(
-              "notebook";
-              Export_cache_dir       = "pluto_state_cache",
-              Export_output_dir      = "build",
+              "notebooks";
+              Export_cache_dir  = "pluto_state_cache",
+              Export_output_dir = "build",
               Export_baked_notebookfile = false,
-              Export_baked_state     = false,
+              Export_baked_state = false,
             )'
 
-      - name: Add index page
-        run: cp build/atlas.html build/index.html
+      - name: Landing page
+        run: cp web/index.html build/index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4

@@ -1,46 +1,38 @@
-# Projection round-trip atlas
+# Geo notebooks
 
-Every map projection in [CoordRefSystems.jl](https://github.com/JuliaEarth/CoordRefSystems.jl)
-makes a quiet promise: project a latitude and longitude, convert it back, and you should land
-where you started.
+[Pluto](https://plutojl.org) notebooks built on the [JuliaEarth](https://github.com/JuliaEarth)
+stack — real geospatial data, real projections, and pictures that explain something.
 
-This is a [Pluto](https://plutojl.org) notebook that measures how well that promise holds, for
-every projection, at every point on the globe, and draws the answer as a map.
+## Notebooks
 
-**Read it here: https://jitendravjh.github.io/projection-atlas**
+### [The shape of the world](https://jitendravjh.in/geo-notebooks/shape-of-the-world.html)
 
-## What it shows
+Every flat map of a round planet is a lie, and Gauss proved you cannot avoid it. This notebook
+morphs the world continuously between projections, then uses Tissot's indicatrix — small circles
+drawn on the globe and projected along with the land — to show exactly what each projection
+gives up.
 
-Round-trip displacement is measured as **great-circle distance in metres** between the original
-point and the recovered one. That matters: comparing latitude and longitude componentwise makes
-every projection look broken at the poles, where longitude is undefined and any value is the
-same physical point.
+Mercator keeps every circle a circle and lets them grow without limit. Gall–Peters keeps every
+circle the same area and squashes them into ellipses. Robinson keeps neither, on purpose.
 
-Measured over a 1° global grid against CoordRefSystems v0.19.24:
+### [A round-trip atlas](https://jitendravjh.in/geo-notebooks/roundtrip-atlas.html)
 
-| tier | projections | worst displacement |
-|---|---|---|
-| exact | PlateCarree, WebMercator, Mercator, Sinusoidal, WinkelTripel | 3–6 nm |
-| pole-limited | OrthoNorth, EqualEarth, LambertAzimuthal, GallPeters, Albers | 0.10–0.31 m |
-| **outliers** | **Robinson**, **TransverseMercator** | **39 m**, **217 m** |
+Project a point, convert it back, and measure how far it moved. Doing that for every projection
+at every point on the globe turns a table of numbers into a map of where each implementation
+struggles — and the failures have structure. Robinson's error falls in horizontal bands sitting
+on the five-degree spacing of its lookup table. Transverse Mercator's falls in two discs at the
+singularity ninety degrees from its central meridian.
 
-The two outliers are the two projections with open accuracy issues, and the atlas shows *where*
-each one fails:
+## Built with
 
-- **Robinson** is defined by a table at every 5° of latitude rather than a formula. Its error
-  appears as horizontal bands sitting on the tabulation knots, which is the `Float32`
-  interpolation-coefficient discontinuity described in
-  [issue #55](https://github.com/JuliaEarth/CoordRefSystems.jl/issues/55).
-- **TransverseMercator** shows two bright discs on the equator, 90° east and west of the
-  central meridian, where the projection is singular. That is
-  [issue #40](https://github.com/JuliaEarth/CoordRefSystems.jl/issues/40).
+[CoordRefSystems.jl](https://github.com/JuliaEarth/CoordRefSystems.jl) for projections,
+[Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl) for geometry,
+[GeoArtifacts.jl](https://github.com/JuliaEarth/GeoArtifacts.jl) for Natural Earth data,
+[Makie.jl](https://docs.makie.org) for drawing.
 
-## Running it
+## Running locally
 
 ```julia
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
-julia --project=. -e 'using Pluto; Pluto.run(notebook="notebook/atlas.jl")'
+julia --project=. -e 'using Pluto; Pluto.run(notebook="notebooks/shape-of-the-world.jl")'
 ```
-
-The environment is pinned, so the numbers above are reproducible. Re-running against a newer
-release of CoordRefSystems.jl shows what has changed.

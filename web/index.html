@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geo notebooks</title>
+<meta name="description" content="Pluto notebooks on the JuliaEarth stack: map projections, what they give up, and how accurately they invert.">
+<style>
+  :root {
+    --ocean: #0d1721;
+    --deep:  #08111a;
+    --land:  #ede6d4;
+    --grid:  #385166;
+    --warm:  #f27340;
+    --muted: #8fa3b5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--deep);
+    color: var(--land);
+    font: 16px/1.65 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+  header { margin-bottom: 4rem; }
+  h1 {
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    line-height: 1.1; margin: 0 0 1rem; letter-spacing: -0.02em; font-weight: 650;
+  }
+  h1 .accent { color: var(--warm); }
+  .lede { font-size: 1.15rem; color: var(--muted); margin: 0; max-width: 60ch; }
+  .cards { display: grid; gap: 1.25rem; }
+  a.card {
+    display: block; padding: 1.75rem; text-decoration: none; color: inherit;
+    background: var(--ocean); border: 1px solid var(--grid); border-radius: 10px;
+    transition: border-color .18s ease, transform .18s ease, background .18s ease;
+  }
+  a.card:hover { border-color: var(--warm); transform: translateY(-2px); background: #111f2c; }
+  a.card h2 { margin: 0 0 .6rem; font-size: 1.3rem; letter-spacing: -0.01em; }
+  a.card p { margin: 0; color: var(--muted); font-size: .97rem; }
+  .tags { margin-top: 1rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+  .tag {
+    font-size: .74rem; letter-spacing: .05em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--grid); border-radius: 99px; padding: .18rem .6rem;
+  }
+  footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--grid);
+           color: var(--muted); font-size: .9rem; }
+  footer a { color: var(--land); text-decoration: none; border-bottom: 1px solid var(--grid); }
+  footer a:hover { color: var(--warm); border-color: var(--warm); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Every flat map of a round planet is a <span class="accent">lie</span>.</h1>
+    <p class="lede">
+      The only question is which lie you prefer. Pluto notebooks built on the JuliaEarth stack,
+      about map projections and what they cost.
+    </p>
+  </header>
+
+  <div class="cards">
+    <a class="card" href="shape-of-the-world.html">
+      <h2>The shape of the world</h2>
+      <p>
+        Real coastlines morphing continuously between projections, then Tissot's indicatrix
+        showing exactly what each one gives up. Mercator keeps every circle a circle and lets
+        them grow without limit. Gall&ndash;Peters keeps every area and wrecks every angle.
+        Robinson keeps neither, on purpose.
+      </p>
+      <div class="tags"><span class="tag">Animation</span><span class="tag">Makie</span><span class="tag">Natural Earth</span></div>
+    </a>
+
+    <a class="card" href="roundtrip-atlas.html">
+      <h2>A round-trip atlas</h2>
+      <p>
+        Project a point, convert it back, measure how far it moved. Do that everywhere and the
+        errors turn out to have structure: Robinson's fall in bands on the five degree spacing
+        of its lookup table, Transverse Mercator's in two discs at its singularity.
+      </p>
+      <div class="tags"><span class="tag">Accuracy</span><span class="tag">CoordRefSystems</span></div>
+    </a>
+  </div>
+
+  <footer>
+    Built with
+    <a href="https://github.com/JuliaEarth/CoordRefSystems.jl">CoordRefSystems.jl</a>,
+    <a href="https://github.com/JuliaGeometry/Meshes.jl">Meshes.jl</a>,
+    <a href="https://github.com/JuliaEarth/GeoArtifacts.jl">GeoArtifacts.jl</a> and
+    <a href="https://docs.makie.org">Makie.jl</a>.
+    Source on <a href="https://github.com/jitendravjh/geo-notebooks">GitHub</a>.
+  </footer>
+</div>
+</body>
+</html>

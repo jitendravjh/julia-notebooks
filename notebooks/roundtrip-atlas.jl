@@ -1,6 +1,11 @@
 ### A Pluto.jl notebook ###
 # v0.20.4
 
+#> [frontmatter]
+#> title = "A round-trip atlas for map projections"
+#> description = "Projecting every point on the globe and converting it back, to measure where each projection in CoordRefSystems.jl loses accuracy."
+#> tags = ["julia", "geospatial", "cartography"]
+
 using Markdown
 using InteractiveUtils
 
