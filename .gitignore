@@ -1,0 +1,6 @@
+pluto_state_cache/
+build/
+preview.png
+*.cov
+notebook/*.md
+notebook/*.html

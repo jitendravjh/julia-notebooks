@@ -1,0 +1,5 @@
+[deps]
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+CoordRefSystems = "b46f11dc-f210-4604-bfba-323c1ec968cb"
+PlutoStaticHTML = "359b1769-a58e-495b-9770-312e911026ad"
+Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
